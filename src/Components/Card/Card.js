@@ -1,10 +1,13 @@
 import './Card.css'
+import { Link } from 'react-router-dom'
 
-const Card = ({image, title}) => {
+const Card = ({image, story, setSelectedStory}) => {
     return (
         <div className='card'>
-            <img src={image} />
-            <p>{title}</p>
+            <Link onClick={() => setSelectedStory(story)} to={`story/${story.title}`}>
+                <img src={image} />
+                <p>{story.title}</p>
+            </Link>
         </div>
     )
 

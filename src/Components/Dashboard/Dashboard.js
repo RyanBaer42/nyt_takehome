@@ -1,25 +1,34 @@
-import './Dashboard.css'
+import { useState } from 'react';
+import { useEffect } from 'react';
+import fetchData from '../../ApiCalls';
+import Container from '../Container/Container';
 
-import { useState } from 'react'
-import { useEffect } from 'react'
-import fetchData from '../../ApiCalls'
-import Container from '../Container/Container'
+const Dashboard = ({ setSelectedStory }) => {
+  const [category, setCategory] = useState('science');
+  const [stories, setStories] = useState([]);
 
-const Dashboard = () => {
-    const [stories, setStories] = useState([])
+  useEffect(() => {
+    fetchData(category)
+      .then(data => {
+        setStories(data.results);
+      });
+  }, [category]);
 
-    useEffect(() => {
-        fetchData()
-        .then(data => {
-            console.log(data.results)
-            setStories(data.results)
-        })
-    })
-    return (
-        <div>
-            <Container stories={stories}/>
-        </div>
-    )
-}
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
 
-export default Dashboard
+  return (
+    <div>
+      <select value={category} onChange={handleCategoryChange}>
+        <option value="science">Science</option>
+        <option value="health">Health</option>
+        <option value="sports">Sports</option>
+        <option value="arts">Arts</option>
+      </select>
+      <Container stories={stories} setSelectedStory={setSelectedStory} />
+    </div>
+  );
+};
+
+export default Dashboard;
