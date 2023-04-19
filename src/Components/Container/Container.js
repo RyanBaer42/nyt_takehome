@@ -5,6 +5,9 @@ const Container = ({stories, setSelectedStory}) => {
     let key = 0;
 
     const storyCards = stories.map(story => {
+        if (story.section === 'admin'){
+            return null
+        }
         let imageUrl = '';
         if (Array.isArray(story.multimedia)) {
             imageUrl = story.multimedia[1].url;
@@ -20,7 +23,7 @@ const Container = ({stories, setSelectedStory}) => {
         )
     })
     return (
-        <div>{storyCards}</div>
+        <div className='container'>{storyCards}</div>
     )
 }
 

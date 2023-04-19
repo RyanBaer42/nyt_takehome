@@ -1,0 +1,19 @@
+.NavBar {
+    background-color: black;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-title {
+    margin: 0;
+    color: aliceblue;
+    text-decoration: underline;
+}
+
+.home-link{
+    text-decoration: none;
+}
+
+

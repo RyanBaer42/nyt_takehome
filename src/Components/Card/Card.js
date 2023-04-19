@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 const Card = ({image, story, setSelectedStory}) => {
     return (
         <div className='card'>
-            <Link onClick={() => setSelectedStory(story)} to={`story/${story.title}`}>
-                <img src={image} />
-                <p>{story.title}</p>
+            <Link className='detail-link' onClick={() => setSelectedStory(story)} to={`story/${story.title}`}>
+                <img className='card-image' src={image} />
+                <p className='card-title'>{story.title}</p>
             </Link>
         </div>
     )

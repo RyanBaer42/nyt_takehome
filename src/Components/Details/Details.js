@@ -9,7 +9,7 @@ const Details = ({selectedStory}) => {
 
     return (
         <div className="Details">
-            <img src={selectedStory.multimedia[1].url}/>
+            <img className="details-image" src={selectedStory.multimedia[1].url}/>
             <p>{formattedDate(selectedStory.created_date)}</p>
             <h1>{selectedStory.title}</h1>
             <p>{selectedStory.abstract}</p>
