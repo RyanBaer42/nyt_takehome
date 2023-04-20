@@ -1,3 +1,5 @@
+const API_KEY = process.env.REACT_APP_API_KEY
+
 const fetchData = (category) => {
     let path;
     if (!category){
@@ -5,7 +7,7 @@ const fetchData = (category) => {
     } else {
         path = `${category}`
     }
-    return fetch(`https://api.nytimes.com/svc/topstories/v2/${path}.json?api-key=BqzIbNC3uTWa4nZrglBhXAyPq5Zzarec`)
+    return fetch(`https://api.nytimes.com/svc/topstories/v2/${path}.json?api-key=${API_KEY}`)
         .then(response => {
             if (response.ok) {
                 return response.json()
